@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Digital Clock -->
+        <div class="watch">
+            <h2 class="day" id="day"></h2>
+                <div class="box">
+                    <div class="clock">
+                        <div class="front-clock">
+                            <div id="hour">00</div>
+                            <p>hour</p>
+                        </div>
+                    </div>
+
+                    <div class="clock">
+                        <div class="front-clock">
+                            <div id="minute">00</div>
+                            <p>minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="clock">
+                        <div class="front-clock">
+                            <div id="second">00</div>
+                            <p>seconds</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Todo List -->
+        <div class="todo-app">
+            <h1>To-do List</h1>
+            <div class="inputBox">
+                <input type="text" id="input" placeholder="Enter text here">
+                <button onclick="addTodo()">Add</button>
+            </div>
+            <ul id="todos">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
