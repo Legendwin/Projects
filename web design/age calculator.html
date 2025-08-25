@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            background: #d7e9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 260px;
+            box-sizing: border-box;
+        }
+
+        input {
+            padding: 8px;
+            width: 100%;
+            font-size: 14px;
+            border: 1px solid #7c6161;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        .result {
+            font-size: 14px;
+            color: #eb1010;
+            background: #dcdfe2;
+            border: 1px solid #d0daf0;
+            border-radius: 6px;
+            padding: 8px;
+        }
+    </style>
+
+    <title>Age Calculator</title>
+</head>
+<body>
+    <div class="box">
+        <h3>Age Calculator</h3>
+        <input type="date" id="DoB" onchange="calculateAge()">
+        <div class="result" id="result">Select your date of birth</div>
+    </div>
+    
+    <script>
+        function calculateAge() {
+            const DoB = new Date(document.getElementById('DoB').value);
+            if (isNaN(DoB))return;
+            const now = new Date();
+            let years = now.getFullYear() - DoB.getFullYear();
+            let months = now.getMonth() - DoB.getMonth();
+            let days = now.getDate() - DoB.getDate();
+            if (days < 0) {
+                months--;
+                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            document.getElementById("result").textContent = `You are ${years} years, ${months} months, and ${days} days old.`;
+        }
+    </script>
+</body>
+</html>
