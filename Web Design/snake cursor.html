@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scorpio Cursor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="scorpio"></canvas>
+    <script>
+        // Simple Input tracker for mouse position
+        const Input = {
+            mouse: { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+        };
+        window.addEventListener('mousemove', e => {
+            Input.mouse.x = e.clientX;
+            Input.mouse.y = e.clientY;
+        });
+
+        // Node structure for limb segments
+        class Node {
+            constructor(x, y, parent = null, isSegment = true) {
+                this.x = x;
+                this.y = y;
+                this.parent = parent;
+                this.isSegment = isSegment;
+            }
+        }
+
+        class LimbSystem {
+            constructor(end, length, speed, creature) {
+                this.creature = creature;
+                this.nodes = [];
+                let node = end;
+                for (let i = 0; i < length; i++) {
+                    this.nodes.unshift(node);
+                    node = node.parent;
+                    if (!node || !node.isSegment) {
+                        this.length = i + 1;
+                        break;
+                    }
+                }
+                this.hip = this.nodes[0].parent;
+                this.speed = speed;
+            }
+            moveTo(x, y) {
+                // Simple IK: move end node towards (x, y)
+                let end = this.nodes[this.nodes.length - 1];
+                end.x += (x - end.x) * this.speed;
+                end.y += (y - end.y) * this.speed;
+                // Propagate movement up the chain
+                for (let i = this.nodes.length - 2; i >= 0; i--) {
+                    let node = this.nodes[i];
+                    let child = this.nodes[i + 1];
+                    let dx = child.x - node.x;
+                    let dy = child.y - node.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    let desiredDist = 30;
+                    if (dist > 0) {
+                        let ratio = (dist - desiredDist) / dist;
+                        node.x += dx * ratio;
+                        node.y += dy * ratio;
+                    }
+                }
+            }
+            update() {
+                this.moveTo(Input.mouse.x, Input.mouse.y);
+            }
+        }
+
+        // Setup canvas
+        const canvas = document.getElementById('scorpio');
+        const ctx = canvas.getContext('2d');
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Create a simple limb system
+        // Build a chain of nodes
+        let base = new Node(canvas.width / 2, canvas.height / 2, null, false);
+        let prev = base;
+        let segments = 8;
+        let nodes = [];
+        for (let i = 0; i < segments; i++) {
+            let node = new Node(base.x, base.y, prev, true);
+            nodes.push(node);
+            prev = node;
+        }
+        let limb = new LimbSystem(nodes[nodes.length - 1], segments, 0.2, null);
+
+        // Animation loop
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            limb.update();
+            // Draw limb
+            ctx.strokeStyle = "#fff";
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(limb.nodes[0].x, limb.nodes[0].y);
+            for (let node of limb.nodes) {
+                ctx.lineTo(node.x, node.y);
+            }
+            ctx.stroke();
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+</html>
