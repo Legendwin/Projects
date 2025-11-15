@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scorpio Cursor</title>
+    <title>Snake Cursor</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <canvas id="scorpio"></canvas>
+    <canvas id="snake"></canvas>
     <script>
         // Simple Input tracker for mouse position
         const Input = {
@@ -87,7 +87,7 @@
         }
 
         // Setup canvas
-        const canvas = document.getElementById('scorpio');
+        const canvas = document.getElementById('snake');
         const ctx = canvas.getContext('2d');
         function resize() {
             canvas.width = window.innerWidth;
