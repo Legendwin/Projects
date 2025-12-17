@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive To-Do List</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 My To-Do List</h1>
+            <p>Stay organized and productive</p>
+        </header>
+        
+        <div class="input-section">
+            <input type="text" id="todo-input" placeholder="What needs to be done?">
+            <button id="add-btn" onclick="addTodo()">Add Task</button>
+        </div>
+        
+        <div class="stats">
+            <span id="total-tasks">Total: 0</span>
+            <span id="completed-tasks">Completed: 0</span>
+        </div>
+        
+        <ul id="todo-list">
+            <!-- Tasks will be added here dynamically -->
+        </ul>
+        
+        <div class="instructions">
+            <p>💡 Click on a task to mark it complete</p>
+            <p>🗑️ Click the X button to delete a task</p>
+        </div>
+    </div>
+    
+    <script src="todo.js"></script>
+</body>
+</html>

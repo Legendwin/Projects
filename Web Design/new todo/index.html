@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo List</title>
-        <link rel="icon" type="image/png" href="./greentick.png" sizes="32x32">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -19,14 +18,14 @@
                                 <p>hour</p>
                             </div>
                         </div>
-
+    
                         <div class="clock">
                             <div class="front-clock">
                                 <div id="minute">00</div>
                                 <p>minutes</p>
                             </div>
                         </div>
-
+    
                         <div class="clock">
                             <div class="front-clock">
                                 <div id="second">00</div>
@@ -35,21 +34,18 @@
                         </div>
                     </div>
             </div>
-
+        
             <!-- Todo List -->
-            <div class="todo-app">
+            <div class="todoBox">
                 <h1>To-do List</h1>
                 <div class="inputBox">
-                    <input type="text" id="input" placeholder="Enter text here">
-                    <button onclick="addTodo()">Add</button>
+                    <input id="todoInput" type="text" placeholder="Enter text here">
+                    <button onclick="addTodo()" type="submit">ADD</button>
                 </div>
-                <ul id="todos">
-                    <!-- <li class="checked">Task 1</li>
-                    <li>Task 2</li>
-                    <li>Task 3</li> -->
-                </ul>
+                <ul id="todo-list"></ul>
             </div>
         </div>
+        
         <script src="script.js"></script>
     </body>
 </html>

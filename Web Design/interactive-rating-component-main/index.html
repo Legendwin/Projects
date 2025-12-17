@@ -13,9 +13,9 @@
     body {
       box-sizing: border-box;
       margin: 0;
-      background: #141519;
+      background: hsl(216, 12%, 8%);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
+      color: hsl(0, 100%, 100%);
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -49,7 +49,7 @@
     div p {
       font-size: 15px;
       font-weight: 500;
-      color: #666C78;
+      color: hsl(217, 12%, 63%);
     }
 
     .num {
@@ -71,32 +71,32 @@
     }
 
     .num p:hover {
-      background-color: #FE7611;
-      color: #1B1B1B;
+      background-color: hsl(25, 97%, 53%);
+      color: hsl(216, 12%, 8%);
     }
 
     p.selected {
-      background-color: white;
-      color: #1B1B1B;
+      background-color: hsl(0, 100%, 100%);
+      color: hsl(216, 12%, 8%);
     }
 
     button {
       border-radius: 50px;
       border: none;
-      color: #1B1B1B;
+      color: hsl(216, 12%, 8%);
       padding: 12px;
       width: 98%;
       display: flex;
       justify-self: center;
       justify-content: center;
-      background-color: #FC7613;
+      background-color: hsl(25, 97%, 53%);
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: white;
+      background-color: hsl(0, 100%, 100%);
     }
 
     .thank-you-state {
@@ -114,8 +114,8 @@
     .selection {
       border-radius: 50px;
       border: none;
-      background-color: #262D38;
-      color: #FC7613;
+      background-color: hsl(213, 19%, 18%);
+      color: hsl(25, 97%, 53%);
       padding: 5px 20px;
       margin-top: 30px;
       margin-bottom: 4px;
@@ -134,7 +134,11 @@
       color: hsl(228, 45%, 44%);
     }
 
-    @media (max-width: 380px){
+    .attribution a:hover {
+      color: hsl(25, 97%, 53%);
+    }
+
+    @media (max-width: 375px){
       .rating-state, .thank-you-state {
         width: 260px;
         padding: 20px;
@@ -222,7 +226,7 @@
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Winner</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/Legendwin">Winner</a>.
   </div>
 
   <script>

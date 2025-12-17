@@ -13,16 +13,16 @@ function compute() {
     };
     let result;
     switch (operation) {
-        case '+': 
+        case 'add':
             result = prev + curr;
             break;
-        case '-':
+        case 'subtract':
             result = prev - curr;
             break;
-        case '×':
+        case 'multiply':
             result = prev * curr;
             break;
-        case '÷':
+        case 'divide':
             if (curr === 0) {
                 result = 'Error';
                 break;
@@ -49,13 +49,13 @@ function compute() {
 
 function opSymbol(op) {
     switch (op) {
-        case '+':
-            return '+'
-        case '-':
+        case 'add':
+            return '+';
+        case 'subtract':
             return '-';
-        case '×':
+        case 'multiply':
             return '×';
-        case '÷':
+        case 'divide':
             return '÷';
         default:
             return '';
@@ -68,12 +68,13 @@ function chooseOperation(op) {
     };
     if (previous !== '') {
         compute();
+    } else {
+        operation = op;
+        previous = current;
+        current = '0';
+        updateDisplay();
     };
-    operation = op;
-    previous = current;
-    current = '0';
-    updateDisplay();
-}
+};
 
 function appendNumber(num) {
     if (current === 'Error') {
@@ -97,7 +98,7 @@ function clearAll() {
     updateDisplay();
 };
 
-function clearEntry() {
+function clearEntry () {
     current = '0';
     updateDisplay();
 };
@@ -115,19 +116,19 @@ function deleteDigit() {
     updateDisplay();
 };
 
-document.querySelectorAll('.calc-button.number').forEach(btn => {
-    btn.addEventListener('click', (e) => appendNumber(e.target.textContent));
+document.querySelectorAll('.btn.number').forEach(btn => {
+    btn.addEventListener('click', (e) => appendNumber(e.target.dataset.number));
 });
 
-document.querySelectorAll('.calc-button.operator').forEach(btn => {
-    const action = btn.textContent;
-    if (action === 'C') {
+document.querySelectorAll('.btn.operator').forEach(btn => {
+    const action = btn.dataset.action;
+    if (action === 'clear') {
         btn.addEventListener('click', clearAll);
-    } else if (action === 'CE') {
+    } else if (action === 'clear-entry') {
         btn.addEventListener('click', clearEntry);
-    } else if (action === '⌫') {
+    } else if (action === 'delete') {
         btn.addEventListener('click', deleteDigit);
-    } else if (action === '=') {
+    } else if (action === 'equals') {
         btn.addEventListener('click', compute);
     } else {
         btn.addEventListener('click', () => chooseOperation(action));

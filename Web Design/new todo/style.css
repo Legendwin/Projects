@@ -68,17 +68,17 @@ h2 {
 
 /* Todo List CSS */
 .container {
-    padding: 10px;
-    width: 100%;
-    min-height: 100vh;
+    align-items: center;
     background: linear-gradient(135deg, #3fce3a, #2702ad);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+    width: 100%;
 }
 
-.todo-app {
+.todoBox {
     width: 100%;
     max-width: 540px;
     background: #fff;
@@ -87,10 +87,10 @@ h2 {
     border-radius: 20px;
 }
 
-h1 {
+h1 {    
+    color: #3fce3a;
     margin-bottom: 20px;
     text-align: center;
-    color: #3fce3a;
 }
 
 .inputBox {
@@ -100,16 +100,16 @@ h1 {
     background: #c4c5c7;
     border-radius: 30px;
     padding-left: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 input {
-    flex: 1;
     border: none;
     background: none;
-    padding: 10px;
-    font-weight: 15px;
+    flex: 1;
+    font-weight: 10px;
     outline: none;
+    padding: 10px;
 }
 
 button {
@@ -123,52 +123,48 @@ button {
     border-radius: 40px;
 }
 
-ul li {
+#todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     list-style: none;
-    font-size: 20px;
-    padding: 12px 8px 12px 50px;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
+    margin-top: 30px;
+    width: 100%;
 }
 
-ul li::before {
-    content: '';
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-image: url(./download.jpg);
-    background-size: cover;
-    background-position: center;
-    top: 10px;
-    left: 8px;
+.todoItems {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
 }
 
-ul li.checked {
-    color: #555;
+.todos {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.todos input {
+    height: 20px;
+    width: 20px;
+}
+
+.completed p {
     text-decoration: line-through;
+    color: #c4c5c7;
 }
 
-ul li.checked::before {
-    background-image: url(./checked.jpg);
+.todoItems .checkbox {
+    cursor: pointer;
 }
 
-#editBt {
-    position: absolute;
-    right: 30px;
-    top: 14px;
-    font-size: 22px;
-    transform: rotate(130deg);
-    color: #555;
-}
-
-#deleteBt {
-    position: absolute;
-    font-size: 28px;
-    right: 0;
-    top: 13px;
-    color: #555;
+.todoItems img {
+    cursor: pointer;
+    height: 24px;
+    margin: 0 10px;
+    width: 24px;
 }
 
 @media (max-width: 1024px) {
@@ -182,13 +178,13 @@ ul li.checked::before {
         width: 70%;
         grid-template-rows: 20% 80%;
     }
-    
+
     h2 {
         display: grid;
         grid-template-rows: 33% 33% 33%;
         font-size: 2rem;
     }
-
+    
     .clock {
         width: 18vw;
         margin: 0;
