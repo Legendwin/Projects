@@ -61,9 +61,28 @@ nav {
     gap: 8px;
 }
 
+#search-input {
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--text-color);
+}
+
+#search-input::placeholder {
+    color: var(--muted);
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--text-color);
+    box-shadow: 0 0 5px var(--text-color);
+}
+
 #theme-toggle {
     background: transparent;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 6px 8px;
     border-radius: 8px;
     cursor: pointer;
@@ -71,7 +90,7 @@ nav {
 }
 
 [data-theme="dark"] #theme-toggle {
-    border-color: rgba(255,255,255,0.08);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 section {
@@ -166,6 +185,10 @@ p {
     transform: scale(1.05);
 }
 
+.btn button:active {
+    transform: scale(0.95);
+}
+
 /* Lightbox modal styles */
 .lightbox {
     position: fixed;
@@ -198,7 +221,7 @@ p {
     max-width: 100%;
     max-height: 80vh;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     background: #111;
 }
 
@@ -309,6 +332,29 @@ footer {
 @media only screen and (max-width: 576px) {
     .col {
         width: 100%;
+    }
+
+    #search-input {
+        padding: 6px 8px;
+        font-size: 1rem;
+        width: 40px;
+        height: 38px;
+        background: transparent;
+    }
+
+    #search-input::placeholder {
+        content: url(./magnifying-glass-solid-grey.svg);
+        width: 20px;
+        height: 20px;
+    }
+
+    [data-theme="dark"] #search-input::placeholder {
+        content: url(./magnifying-glass-solid-green.svg);
+    }
+
+    #search-input:focus {
+        width: 150px;
+        transition: width 0.3s ease;
     }
 
     /* Lightbox mobile adjustments for smaller screens */

@@ -41,10 +41,20 @@
     const API_KEY = 'AKc64Lbu0yi42jhXv5GBRO1eFUWiflbs0IFGf4uh5WR6k3rMUzVq3khs';
     const gallery = document.getElementById('gallery');
     const moreBtn = document.querySelector('.btn button');
-    let currentPage = 1;
+    const searchInput = document.getElementById('search-input');
+    let query = '';
     let cols = [];
     let columnCount = 3;
     let resizeTimeout;
+
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            loadPexelsImages(null, false);
+            searchInput.blur();
+            searchInput.value = '';
+        };
+    });
     
     // Random search queries to vary the images
     const searchQueries = [
@@ -73,7 +83,10 @@
     async function loadPexelsImages(page = null, append = false) {
         try {
             // Use random query and page if not specified
-            const query = getRandomQuery();
+            if (!append) {
+                const searchItem = searchInput.value.trim();
+                query = searchItem ? searchItem : getRandomQuery();
+            }
             const randomPage = page !== null ? page : getRandomPage();
             
             const response = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=30&page=${randomPage}`, {
@@ -120,7 +133,6 @@
             });
             
             initializeGallery();
-            currentPage = randomPage;
         } catch (error) {
             console.error('Error loading images from Pexels:', error);
             if (!append) {
