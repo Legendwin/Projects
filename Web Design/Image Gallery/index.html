@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Image Gallery</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-inner">
+                <h1>IMAGE GALLERY</h1>
+                <div class="nav-controls">
+                    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" aria-pressed="false">🌙</button>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="container">
+                <header>
+                    <h1>Image Gallery</h1>
+                    <p>Browse through a collection of beautiful images.</p>
+                </header>
+
+                <main id="gallery">
+                    <!-- Image columns will be dynamically inserted here -->
+                </main>
+
+                <div class="btn">
+                    <button>More</button>
+                </div>
+                
+                <!-- Lightbox modal -->
+                <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+                    <button class="close" id="lb-close" aria-label="Close">✕</button>
+                    <button class="nav-btn prev" id="lb-prev" aria-label="Previous">‹</button>
+                    <div class="inner">
+                        <img id="lb-img" src="" alt="">
+                        <div class="caption" id="lb-caption"></div>
+                    </div>
+                    <button class="nav-btn next" id="lb-next" aria-label="Next">›</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Copyright © <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+        </footer>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
