@@ -26,7 +26,18 @@
                 width: 500px;
                 box-sizing: border-box;
             }
-
+            
+            .row {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .col {
+                margin: 10px 10px 10px -5px;
+                padding: 10px;
+            }
+            
             input {
                 padding: 8px;
                 width: 200px;
@@ -34,18 +45,6 @@
                 border: 1px solid #7c6161;
                 border-radius: 6px;
                 box-sizing: border-box;
-            }
-
-            .row {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .col {
-                margin: 10px;
-                padding: 10px;
-                margin-left: -5px;
             }
 
             .col p {
@@ -72,6 +71,24 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+
+            @media (max-width: 576px) {
+                .box {
+                    width: 300px;
+                }
+
+                .row {
+                    flex-direction: column;
+                }
+
+                .col {
+                    margin-left: 10px;
+                }
+
+                .result {
+                    width: 200px;
+                }
             }
         </style>
     </head>

@@ -48,9 +48,9 @@
     
     // Random search queries to vary the images
     const searchQueries = [
-        'nature', 'landscape', 'city', 'ocean', 'mountain', 'forest', 'sunset',
-        'travel', 'abstract', 'animals', 'sky', 'architecture', 'flowers',
-        'people', 'food', 'technology', 'urban', 'water', 'wildlife', 'space'
+        'nature', 'landscape', 'city', 'ocean', 'mountain', 'forest', 'sunset', 'houses', 'background', 'beach', 'waterfall', 'aurora', 'countryside',  'desert', 'windows',
+        'travel', 'abstract', 'animals', 'sky', 'architecture', 'flowers', 'dark', 'light', 'festival', 'night', 'gradient', 'bridge', 'island',  'aerial', 'stars', 'desktop',
+        'people', 'food', 'technology', 'urban', 'water', 'wildlife', 'space', 'cars', 'sports', 'art', 'music', 'vintage', 'minimal', 'colorful', 'black and white',
     ];
 
     function getColumnCount() {

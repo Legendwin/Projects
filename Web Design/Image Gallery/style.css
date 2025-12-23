@@ -126,7 +126,7 @@ p {
 
 /* semantic figure cards */
 .image-card {
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 }
 
 .image-card img{
@@ -270,6 +270,10 @@ footer {
 @media only screen and (max-width: 780px) {
     .col {
         width: 49%;
+    }
+
+    .image-card {
+        padding-bottom: 10px;
     }
 
     /* Lightbox mobile adjustments */
