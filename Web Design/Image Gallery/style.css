@@ -288,7 +288,7 @@ p {
     color: var(--text-color);
     border: none;
     padding: 10px 15px;
-    border-radius: 50%;
+    border-radius: 10%;
     font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 0 4px 12px var(--shadow);
