@@ -280,6 +280,22 @@ p {
     border: 0 !important;
 }
 
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--card);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow);
+    display: none;
+    z-index: 1002;
+}
+
 footer {
     background-color: var(--card);
     margin: 28px 0 0 0;
