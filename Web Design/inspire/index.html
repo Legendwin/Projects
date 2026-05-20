@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Legends Inspire</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="quote-container">
+            <div class="slider-track" id="track">
+                <!-- Random Quote Card -->
+                <div class="quote-card">
+                    <div class="quote">
+                        <p id="quote-text">"Loading Inspiration..."</p>
+                        <p id="quote-author"></p>
+                    </div>
+                    <button id="get-quote" onclick="getQuote()">Inspire Me</button>
+                    <button class="link" onclick="switchCard()">Get Today's Inspire →</button>
+                </div>
+
+                <!-- Today's Quote Card -->
+                <div class="today-card">
+                    <div class="quote">
+                        <p id="today-text">"Loading Today's Inspiration..."</p>
+                        <p id="today-author"></p>
+                    </div>
+                    <button class="link" onclick="switchCard()">← Go Back</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>Quotes provided by <a href="https://dummyjson.com/" target="_blank">DummyJSON</a></footer>
+
+        <script src="./script.js"></script>
+    </body>
+</html>

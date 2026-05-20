@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fffdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.quote-container {
+    border-radius: 20px;
+    box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    margin: 20px 10px;
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+}
+
+.slider-track {
+    display: flex;
+    width: 1800px;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.quote-card, .today-card {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    width: 900px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 15px;
+}
+
+#quote-text, #today-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.4;
+    text-align: center;
+}
+
+#quote-author, #today-author {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b9b5b5;
+    text-align: center;
+}
+
+#get-quote {
+    background-color: #6366f1;
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 10px 30px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+}
+
+#get-quote:hover {
+    transform: scale(1.05);
+}
+
+#get-quote:active {
+    transform: scale(0.95);
+}
+
+.link{
+    display: flex;
+    align-self: flex-end;
+    border: none;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #6366f1;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #9091f7;
+}
+
+@media (max-width: 1024px) {
+    .quote-container {
+        width: 800px;
+    }
+
+    .slider-track {
+        width: 1600px;
+    }
+
+    .quote-card, .today-card {
+        width: 800px;
+    }
+}
+
+@media (max-width: 780px) {
+    .quote-container {
+        width: 600px;
+    }
+
+    .slider-track {
+        width: 1200px;
+    }
+
+    .quote-card, .today-card {
+        width: 600px;
+    }
+}
+
+@media (max-width: 576px) {
+    .quote-container {
+        width: 300px;
+        height: 400px;
+    }
+
+    .slider-track {
+        width: 600px;
+    }
+
+    .quote-card, .today-card {
+        width: 300px;
+    }
+
+    #get-quote {
+        margin-bottom: 20px;    
+    }
+}
