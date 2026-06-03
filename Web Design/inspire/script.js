@@ -3,7 +3,6 @@ let isTodayView = false;
 document.addEventListener("DOMContentLoaded", function() {
     getQuote();
     getToday();
-    scheduleMidnightRefresh();
 });
 
 async function getQuote() {
@@ -45,7 +44,7 @@ async function getToday() {
         const quoteId = (totalDays % totalQuotesInAPI) + 1;
 
         // 3. Fetch that specific quote ID
-        const response = await fetch(`https://dummyjson.com${quoteId}`);
+        const response = await fetch(`https://dummyjson.com/quotes/${quoteId}`);
         const data = await response.json();
 
         // 5. Save the new quote and today's date into localStorage
@@ -78,3 +77,96 @@ function switchCard() {
         isTodayView = false;
     }
 };
+
+function getShareText() {
+    const quoteText = isTodayView ? document.getElementById('today-text').textContent : document.getElementById('quote-text').textContent;
+    const quoteAuthor = isTodayView ? document.getElementById('today-author').textContent : document.getElementById('quote-author').textContent;
+    return `${quoteText}\n${quoteAuthor}\n\nGet inspired on Legends Inspire! ${window.location.href}`;
+}
+
+async function shareQuote() {
+    const shareText = getShareText();
+    const shareData = {
+        title: 'Legends Inspire',
+        text: shareText,
+        url: window.location.href,
+    };
+
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+            await navigator.clipboard.writeText(shareText);
+            alert('Quote copied to clipboard. Paste it into your app to share.');
+        } catch (error) {
+            console.error('Clipboard write failed:', error);
+            prompt('Copy this text to share:', shareText);
+        }
+        return;
+    }
+
+    prompt('Copy this text to share:', shareText);
+};
+
+function shareVia(app) {
+    const text = getShareText();
+    const encodedText = encodeURIComponent(text);
+    const encodedUrl = encodeURIComponent(window.location.href);
+    let shareUrl = '';
+
+    switch(app) {
+        case 'whatsapp':
+            shareUrl = `https://api.whatsapp.com/send?text=${encodedText}`;
+            break;
+        case 'twitter':
+            shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
+            break;
+        case 'facebook':
+            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
+            break;
+        case 'telegram':
+            shareUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+            break;
+        default:
+            return;
+    }
+
+    window.open(shareUrl, '_blank', 'noopener');
+};
+
+// Theme switcher: toggles data-theme on <html> and persists preference
+(function (){
+    const btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const STORAGE_KEY = 'theme-preference';
+
+    function setTheme(theme){
+        if(theme === 'dark'){
+            root.setAttribute('data-theme','dark');
+            btn.textContent = '☀️';
+            btn.setAttribute('aria-pressed','true');
+        } else {
+            root.removeAttribute('data-theme');
+            btn.textContent = '🌙';
+            btn.setAttribute('aria-pressed','false');
+        }
+    }
+
+    function init(){
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if(saved === 'dark' || saved === 'light'){
+            setTheme(saved === 'dark' ? 'dark' : 'light');
+            return;
+        }
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    btn.addEventListener('click', function(){
+        const active = root.getAttribute('data-theme') === 'dark';
+        const next = active ? 'light' : 'dark';
+        setTheme(next);
+        localStorage.setItem(STORAGE_KEY, next);
+    });
+
+    init();
+})();

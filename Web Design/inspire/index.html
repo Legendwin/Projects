@@ -8,6 +8,7 @@
     </head>
     <body>
         <div class="quote-container">
+            <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" aria-pressed="false">🌙</button>
             <div class="slider-track" id="track">
                 <!-- Random Quote Card -->
                 <div class="quote-card">
@@ -16,6 +17,13 @@
                         <p id="quote-author"></p>
                     </div>
                     <button id="get-quote" onclick="getQuote()">Inspire Me</button>
+                    <div class="share-links">
+                        <button class="app-share-button" onclick="shareQuote()">Copy</button>
+                        <button class="app-share-button" onclick="shareVia('whatsapp')">WhatsApp</button>
+                        <button class="app-share-button" onclick="shareVia('twitter')">Twitter</button>
+                        <button class="app-share-button" onclick="shareVia('facebook')">Facebook</button>
+                        <button class="app-share-button" onclick="shareVia('telegram')">Telegram</button>
+                    </div>
                     <button class="link" onclick="switchCard()">Get Today's Inspire →</button>
                 </div>
 
@@ -24,6 +32,13 @@
                     <div class="quote">
                         <p id="today-text">"Loading Today's Inspiration..."</p>
                         <p id="today-author"></p>
+                    </div>
+                    <div class="share-links">
+                        <button class="app-share-button" onclick="shareQuote()">Copy</button>
+                        <button class="app-share-button" onclick="shareVia('whatsapp')">WhatsApp</button>
+                        <button class="app-share-button" onclick="shareVia('twitter')">Twitter</button>
+                        <button class="app-share-button" onclick="shareVia('facebook')">Facebook</button>
+                        <button class="app-share-button" onclick="shareVia('telegram')">Telegram</button>
                     </div>
                     <button class="link" onclick="switchCard()">← Go Back</button>
                 </div>
